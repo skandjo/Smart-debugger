@@ -1,0 +1,46 @@
+Analyse ce code Python et l’erreur associée :
+
+Code :
+{{CODE_A_ANALYSER}}
+
+Erreur :
+{{ERREUR}}
+
+Ton objectif :
+- Identifier les erreurs (syntaxe, logique, import, indentation, exécution…)
+- Pour chaque erreur, proposer un correctif EXÉCUTABLE immédiatement
+- Produire un JSON strict et rien d’autre
+
+FORMAT DE SORTIE OBLIGATOIRE :
+
+{
+  "erreurs": [
+    {
+      "ligne": numéro_de_ligne,
+      "a_supprimer": "ligne fautive EXACTE (caractères et espaces inclus)",
+      "remplacement": "ligne corrigée EXÉCUTABLE, contenant si nécessaire la définition de la variable puis l'instruction corrigée, dans UNE SEULE LIGNE Python séparée par un ;",
+      "explication": "Explication claire et précise et en français."
+    }
+  ],
+  "code_corrige": "Code Python final, complet et fonctionnel.",
+}
+
+RÈGLES STRICTES :
+1. NE RENVOIE STRICTEMENT QUE LE JSON.
+2. "remplacement" doit contenir UNE SEULE LIGNE Python complète et exécutable.
+3. Si la ligne originale référence une variable non définie, tu DOIS produire :
+   "variable = None; <instruction corrigée>"
+   Exemple :
+   "A = None; print(A)"
+4. Tu dois conserver les MAJUSCULES de la variable ("A" reste "A").
+5. Ne jamais utiliser l’opérateur walrus (:=).
+6. Ne jamais ajouter de parenthèses inutiles.
+7. Ne jamais reformater le code ou modifier les lignes qui ne sont pas erronées.
+8. "code_corrige" doit contenir :
+   - la définition ajoutée sur une ligne à part
+   - puis la version corrigée
+   Exemple :
+   A = None
+   print(A)
+9. Tu comptes toutes les lignes : y compris les lignes vides.
+10. Si PRINT(b) est valide (peut être une fonction), NE PAS le modifier.
